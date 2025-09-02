@@ -1,0 +1,372 @@
+//What is an Inner Class ?
+// An inner class is a class defined inside another class . 
+// To logically group classes , improve encapsulation and access outer class members easily.
+
+// Type of Inner Classes in Java 
+
+// 1. Non-static Inner Classes (Regular Ineer Class)
+  // Defined inside another class .
+  // Can access all members (including private ) of outer class .
+  // Needs an object of outer class to be created.
+ 
+class Outer{
+	private String msg = "Hi Darlng  . I need a pilow .";
+	class Inner{
+		void display(){
+			System.out.println(msg);// method that accessable from other classes
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Outer outer = new Outer();
+		Outer. Inner inner = outer . new Inner();
+		inner.display();
+	}
+}
+
+// 2 . Static Nested Class
+   // Declared with static.
+   // Can only access static members of outer class directly .
+   // No need of outer object to create it .
+
+class Outer{
+	static String msg = "Hi ! Buddy . I am not ur creator .";
+	static class Inner{
+		void display(){
+			System.out.println(msg);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Outer. Inner inner = new Outer .  Inner();
+		inner.display();
+	}
+}
+
+//3.Local Inner Class 
+  // Defined inside a method.
+  // Can access local variables(must be final or effectively final).
+  // Mostly used for helper tasks.
+  class Outer{
+	  void outerMethod(){
+		  class Inner{
+			  void display(){
+				  System.out.println("Inside Local Inner Class ");
+				  
+			  }
+		  }
+		  Inner inner = new Inner();
+		  inner.display();
+	  }
+  }
+  public class F6{
+	  public static void main(String[]args){
+		  new Outer().outerMethod();
+	  }
+  }
+
+//4.Anonymous Inner Class
+  // A class without a name.
+  // Declared and instantiated at the same time .
+  // Usually used when implementing interfaces and overriding methods once.
+  
+abstract class Animal{
+	abstract void sound();
+}
+public class F6{
+	public static void main(String[]args){
+		Animal dog = new Animal(){
+			void sound(){
+				System.out.println("Woof! Woof! ");
+			}
+		};
+		dog.sound();
+	}
+}
+
+//Q1. Write a program using a non-static inner class that prints the name of the student ?
+ 
+class Student{
+     private String name = "Rahul ";
+	 class Info{
+		 void print(){
+			 System.out.println("Hi  ..... "+name);// Assign Object
+		 }
+	 }
+}
+public class F6{
+	public static void main(String[]args){
+		Student student = new Student();
+		Student.Info info = student. new Info();// craete inner class
+		info.print();
+	}
+}
+
+//Q2. Write a program using a static nested class to display a college name .
+class College{
+	static String name = "Govt. Debendra College";
+	static class Info{
+		void print(){
+			System.out.println("College Name : "+name);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		College.Info info = new College. Info();// No outer object needed 
+		info.print();
+	}
+}
+
+// Q3. Write a program with a local inner class inside a method that prints a message .
+class Outer{
+	void displayMessage(){
+		class Inner{
+			void show(){
+				System.out.println(" HI My Love . ");
+			}
+		}
+		Inner inner = new Inner();
+		inner.show();
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		new Outer().displayMessage();
+	}
+}
+
+//Q4. Write a program using an anonymous inner class that ovverrides a method ?
+abstract class Animal{
+	abstract void sound();
+}
+public class F6{
+	public static void main(String[]args){
+		Animal dog = new Animal(){
+			void sound(){
+				System.out.println("Woof Woof !");
+			}
+		};
+		dog.sound();
+	}
+}
+
+//Q5.Create a program with a non-static inner class where Library is the outer class and Book is the inner class. Print the book name and author.
+class Library{
+	private String name = "Overthinker ";
+	private String author = "J.K Rowling ";
+	class Book{
+		void print(){
+			System.out.println("Book Name : "+name+" ,Author : "+author);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Library library = new Library();
+		Library. Book book = library. new Book();
+		book.print();
+	}
+}
+
+//Q6.Write a program using a static nested class called University → Department that prints the department name.
+class University{
+	static String name = "East West University" ;
+	static String department = "Computer Science and Engineering";
+	static class Department{
+		void display(){
+			System.out.println("University Name : "+name+" , Department : "+department);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		University. Department department = new University.Department();
+		department.display();
+	}
+}
+
+//Q7.Write a program with a local inner class inside a method called Calculator that adds two numbers.
+class Outer{
+	protected int a = 5780;
+	protected int b = 5780;
+	protected int result ;
+	void addResult(){
+		class Inner{
+			void display(){
+				result = a+b ;
+				System.out.println("Add of two number : "+result);
+			}
+		}
+		Inner inner = new Inner();
+		inner.display();
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		new Outer().addResult();
+	}
+}
+
+//Q8.Use an anonymous inner class to implement an interface Vehicle with method drive(). Print "Car is driving" from the method.
+abstract class Vehicle{
+	abstract void drive();
+}
+public class F6{
+	public static void main(String[]args){
+		Vehicle v = new Vehicle(){
+			void drive(){
+				System.out.println("Car is driving");
+			}
+		};
+		v.drive();
+	}
+}
+
+//Q9.Create a program where Company is the outer class and Employee is a non-static inner class. Print employee ID and salary.
+class Company{
+	private String ID="24TY-56UI";
+	private double salary=39890.78;
+	class Employee{
+		void print(){
+			System.out.println("Employee ID : "+ID+" , Salary : "+salary);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Company company = new Company();
+		Company. Employee employee = company. new Employee();
+		employee.print();
+	}
+}
+
+//Q10.Write a program using a static nested class Bank → Account. Print the account number and balance.
+class Bank{
+	static String number = "TY-789";
+	static double balance = 560000.0;
+	static class Account{
+		void print(){
+			System.out.println("Number : "+number+ " , Balance : "+balance);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Bank. Account account = new Bank. Account();
+		account.print();
+	}
+}
+
+//Q11. Make a program with a local inner class inside a method of class Game. The inner class should print "Game Started!".
+class Outer{
+	void Game(){
+		class Inner{
+			void print(){
+				System.out.println("Game Started!");
+			}
+		}
+		Inner inner = new Inner();
+		inner.print();
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		new Outer().Game();
+	}
+}
+
+//Q12. Use an anonymous inner class to override a method eat() from an abstract class Animal. Print "Dog is eating"
+abstract class Animal{
+	abstract void eat();
+}
+public class F6{
+	public static void main(String[]args){
+		Animal dog = new Animal(){
+			void eat(){
+				System.out.println("Dog is eating .");
+			}
+		};
+		dog.eat();
+	}
+}
+
+// DSU Exercise - 1 
+class Library{
+	private String libraryName = "Dr . S.R. Laskar Library";
+	class Book{
+		void display(){
+			System.out.println(libraryName);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		Library library = new Library();
+		Library.Book book = library. new Book();
+		book.display();
+	}
+}
+
+// DSU Exercise - 2 
+class MathUtil{
+	static int a = 20;
+	static int b = 4;
+	static int result;
+	
+	static class Calculator{
+		void add(){
+			result = a+b;
+			System.out.println("Result : "+result);
+		}
+		void subtract(){
+			result = a-b;
+			System.out.println("Result : "+result);
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		MathUtil . Calculator calculator = new MathUtil. Calculator();
+		calculator.add();
+		calculator.subtract();
+	}
+}
+
+// DSU Exercise - 3 
+class Bank{
+	protected double balance= 33569.98;
+	//protected double interest= 0.1;
+	void showInterest(){
+		class Inner{
+			void InterestCalculator(){
+				balance = balance + balance*0.1;
+				System.out.println("On bank amount 10% interest . Your amount is : "+balance);
+			}
+		}
+		Inner inner = new Inner();
+		inner.InterestCalculator();
+	}
+}
+public class F6{
+	public static void main(String[] args){
+		new Bank().showInterest();
+	}
+}
+
+// DSU Exercise - 4
+abstract class Greeting{
+	abstract void sayHello();
+}
+public class F6{
+	public static void main(String[]args){
+		Greeting g = new Greeting(){
+			void sayHello(){
+				System.out.println("Hi MY Dear Buddy .");
+			}
+		};
+		g.sayHello();
+	}
+}
