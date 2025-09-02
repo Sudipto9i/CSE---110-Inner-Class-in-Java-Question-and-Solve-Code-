@@ -370,3 +370,27 @@ public class F6{
 		g.sayHello();
 	}
 }
+// DSU Exercise - 6
+class University{
+	private String msg = "God makes me with more intelligent and powerful in the world ." ;
+	class Department{
+		void display(){
+			System.out.println(msg);
+		}
+	}
+	static String name="S.K . SING" ;
+	static class Registrar{
+		void display(){
+			System.out.println("Hi Guys ! I am "+name+ " your registar.");
+		}
+	}
+}
+public class F6{
+	public static void main(String[]args){
+		University u = new University();
+		University. Department department = u. new Department();
+		department.display();
+		University. Registrar r = new University. Registrar();
+		r.display();
+	}
+}
